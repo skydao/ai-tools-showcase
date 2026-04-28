@@ -49,15 +49,6 @@ function HomeContent() {
 
       {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        >
-          <source src="/backgrounds/galaxy.mp4" type="video/mp4" />
-        </video>
         <div className="absolute inset-0 bg-gradient-to-br from-brand-violet/5 via-transparent to-brand-indigo/5 animate-gradient" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-violet/10 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-indigo/10 rounded-full blur-3xl animate-float-delayed" />
