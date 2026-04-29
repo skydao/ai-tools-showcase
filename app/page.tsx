@@ -44,8 +44,8 @@ function MouseTrail() {
 function HomeContent() {
   return (
     <main className="min-h-screen relative overflow-hidden">
-      {/* Mouse Trail Effect */}
-      <MouseTrail />
+      {/* Mouse Trail Effect - Temporarily disabled */}
+      {/* <MouseTrail /> */}
 
       {/* Animated Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
@@ -99,11 +99,12 @@ function HomeContent() {
                 <div className="flex flex-col gap-4">
                   {/* Logo - Large and Prominent */}
                   <div className="flex items-center gap-4">
-                    <div className="relative w-20 h-20 hover:scale-110 transition-transform duration-300">
+                    <div className="relative w-20 h-20 shrink-0 hover:scale-110 transition-transform duration-300">
                       <Image
                         src={tool.logo}
                         alt={tool.name}
-                        fill
+                        width={80}
+                        height={80}
                         className="object-contain"
                       />
                     </div>
