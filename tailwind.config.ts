@@ -6,11 +6,14 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         // Linear Design System Colors
-        background: "#08090a",
+        bg: {
+          DEFAULT: "#08090a",
+        },
         panel: "#0f1011",
         surface: "#191a1b",
         secondary: "#28282c",

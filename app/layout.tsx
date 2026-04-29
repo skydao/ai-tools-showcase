@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
       <html lang="zh-CN" className="dark">
-        <body className="min-h-screen bg-background text-primary">
+        <body className="min-h-screen bg-bg text-primary">
           <nav className="sticky top-0 z-50 border-b border-subtle bg-panel/95 backdrop-blur supports-[backdrop-filter]:bg-panel/60">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 items-center justify-between">
