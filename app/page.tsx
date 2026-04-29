@@ -1,63 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import { featuredTools, categories } from "@/lib/data";
-import { Search, Star, ArrowRight, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { Star, ArrowRight, Sparkles } from "lucide-react";
 
-function MouseTrail() {
-  const [trails, setTrails] = useState<{ x: number; y: number; id: number }[]>([]);
-
-  useEffect(() => {
-    let id = 0;
-    const handleMouseMove = (e: MouseEvent) => {
-      const newTrail = { x: e.clientX, y: e.clientY, id: ++id };
-      setTrails((prev) => [...prev.slice(-15), newTrail]);
-      
-      setTimeout(() => {
-        setTrails((prev) => prev.filter((t) => t.id !== newTrail.id));
-      }, 500);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
+export default function Home() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      {trails.map((trail) => (
-        <div
-          key={trail.id}
-          className="absolute w-2 h-2 rounded-full bg-brand-violet opacity-60 blur-sm animate-ping"
-          style={{
-            left: trail.x,
-            top: trail.y,
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function HomeContent() {
-  return (
-    <main className="min-h-screen relative overflow-hidden">
-      {/* Mouse Trail Effect - Temporarily disabled */}
-      {/* <MouseTrail /> */}
-
-      {/* Animated Background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-violet/5 via-transparent to-brand-indigo/5" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-violet/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-indigo/10 rounded-full blur-3xl" />
-      </div>
-
+    <main className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
+      <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative z-10 text-center">
+          <div className="text-center">
             <h1 className="text-balance text-4xl font-semibold tracking-tight text-linear sm:text-6xl lg:text-7xl">
               探索最好的
               <span className="text-brand-violet"> AI 工具</span>
@@ -79,7 +30,7 @@ function HomeContent() {
       </section>
 
       {/* Featured Tools */}
-      <section className="py-24 relative">
+      <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <h2 className="text-3xl font-semibold tracking-tight text-linear sm:text-4xl">
@@ -94,19 +45,12 @@ function HomeContent() {
               <Link
                 key={tool.id}
                 href={`/tools/${tool.id}`}
-                className="card-base p-6 group"
+                className="card-base p-6"
               >
                 <div className="flex flex-col gap-4">
-                  {/* Logo - Large and Prominent */}
                   <div className="flex items-center gap-4">
-                    <div className="relative w-20 h-20 shrink-0 hover:scale-110 transition-transform duration-300">
-                      <Image
-                        src={tool.logo}
-                        alt={tool.name}
-                        width={80}
-                        height={80}
-                        className="object-contain"
-                      />
+                    <div className="w-20 h-20 bg-panel rounded-lg flex items-center justify-center text-3xl">
+                      {tool.name.charAt(0)}
                     </div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-linear text-primary">
@@ -121,9 +65,9 @@ function HomeContent() {
                       <span className="text-lg font-semibold">{tool.rating}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-base text-tertiary">{tool.description}</p>
-                  
+
                   <div className="flex flex-wrap gap-2">
                     <span className="rounded-full border border-subtle px-3 py-1 text-sm text-secondaryText bg-brand-indigo/5">
                       {tool.category}
@@ -145,7 +89,7 @@ function HomeContent() {
       </section>
 
       {/* Categories */}
-      <section className="py-24 border-t border-subtle relative">
+      <section className="py-24 border-t border-subtle">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <h2 className="text-3xl font-semibold tracking-tight text-linear sm:text-4xl">
@@ -160,13 +104,13 @@ function HomeContent() {
               <Link
                 key={category}
                 href={`/tools?category=${category}`}
-                className="card-base p-6 flex items-center gap-4 group hover:scale-105 transition-transform duration-300"
+                className="card-base p-6 flex items-center gap-4"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-indigo/10 text-brand-violet group-hover:bg-brand-violet group-hover:text-white transition-all duration-300">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-indigo/10 text-brand-violet">
                   <Sparkles className="h-7 w-7" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-primary group-hover:text-brand-violet transition-colors text-lg">
+                  <h3 className="font-semibold text-primary text-lg">
                     {category}
                   </h3>
                   <p className="text-sm text-tertiary">
@@ -184,9 +128,9 @@ function HomeContent() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 border-t border-subtle relative">
+      <section className="py-24 border-t border-subtle">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="card-base p-12 text-center hover:scale-105 transition-transform duration-300">
+          <div className="card-base p-12 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-linear sm:text-4xl">
               发现更多 AI 工具
             </h2>
@@ -204,8 +148,4 @@ function HomeContent() {
       </section>
     </main>
   );
-}
-
-export default function Home() {
-  return <HomeContent />;
 }
