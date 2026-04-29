@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-      <html lang="zh-CN">
+    <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+      <html lang="zh-CN" className="dark">
         <body className="min-h-screen bg-background text-primary">
           <nav className="sticky top-0 z-50 border-b border-subtle bg-panel/95 backdrop-blur supports-[backdrop-filter]:bg-panel/60">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
